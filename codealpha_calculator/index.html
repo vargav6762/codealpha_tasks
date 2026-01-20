@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mini Gradient Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .calculator {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            width: 300px;
+        }
+        input {
+            width: 100%;
+            padding: 8px;
+            margin: 6px 0;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        .result {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="calculator">
+    <h2>Gradient Calculator</h2>
+
+    <input type="number" id="x1" placeholder="x₁">
+    <input type="number" id="y1" placeholder="y₁">
+    <input type="number" id="x2" placeholder="x₂">
+    <input type="number" id="y2" placeholder="y₂">
+
+    <button onclick="calculateGradient()">Calculate Gradient</button>
+
+    <div class="result" id="result"></div>
+</div>
+
+<script>
+    function calculateGradient() {
+        const x1 = parseFloat(document.getElementById("x1").value);
+        const y1 = parseFloat(document.getElementById("y1").value);
+        const x2 = parseFloat(document.getElementById("x2").value);
+        const y2 = parseFloat(document.getElementById("y2").value);
+
+        if (x2 === x1) {
+            document.getElementById("result").innerText =
+                "Gradient is undefined (division by zero)";
+            return;
+        }
+
+        const gradient = (y2 - y1) / (x2 - x1);
+        document.getElementById("result").innerText =
+            "Gradient = " + gradient;
+    }
+</script>
+
+</body>
+</html>
